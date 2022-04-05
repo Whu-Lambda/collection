@@ -77,6 +77,6 @@ Hello, World!
 
 这里我们使用 VSCode 作为我们的开发工具，你也可以使用其他开发工具。在插件市场搜索 `go` 安装下载量最大的那个，此时点击 `hello.go` ，VSCode 右下角会提示没有安装 xxx，点击安装所有（Install All），等待 VSCode 安装好所有的工具后即可。
 
-![VScode Go](https://sophia-1303119720.cos.ap-nanjing.myqcloud.com/course/f79fa3ae308a0aebcb65e7904ede57d2.png)
+![VScode Go](https://sophia-1303119720.cos.ap-nanjing.myqcloud.com/course/b9af753b694eff5f46181f67132bfba1.png)
 
 到此为止，你已经配置好了 Go 语言的开发环境，接下来就可以愉快地使用 Go 语言了。
