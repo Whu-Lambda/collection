@@ -1,6 +1,9 @@
 要点：
 
 - 基本用法
+- 底层表示
+- 空接口
+- 类型断言
 
 # 基本用法
 
@@ -303,10 +306,3 @@ Naveen : I am a string
 77 : I am a int
 Unknown type
 ```
-
-
-
-
-
-
-

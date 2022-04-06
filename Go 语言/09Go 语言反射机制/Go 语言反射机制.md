@@ -101,4 +101,3 @@ func main() {
 ```shell
 name nickname 
 ```
-
