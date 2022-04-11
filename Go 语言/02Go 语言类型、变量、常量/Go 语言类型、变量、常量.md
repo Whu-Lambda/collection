@@ -150,6 +150,65 @@ name is:  lambda age is:  2
 price is:  9.9 count is:  0
 ```
 
+## 使用 `:=` 声明多个变量的重复声明
+
+Go 的错误处理机制使得经常有函数返回 `error` 的情况。若您使用 `:=` 将函数的返回值声明为变量：
+
+```go
+foo, err := f() // Declares foo and err
+bar, err2 := g() // Declares bar and err2
+// ... err3, err4, ...
+```
+
+过多的变量也许会带来不便。您可能希望复用第一次声明的 `err`：
+
+```go
+foo, err := f()
+
+var bar T // Declares only bar
+bar, err = g() // assignments, not declaration
+```
+
+或许这过于繁复，您希望有更简单的办法。幸运的是，当您使用 `:=` 声明超过一个变量的时候，Go 会自动声明**未声明过**的变量，其他变量则为赋值。
+
+```go
+foo, err := f() // Declares foo and err
+bar, err := g() // Valid, err has been overwritten.
+```
+
+您可以尝试运行以下的 demo：
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func f() (int, error) {
+	return 1, fmt.Errorf("error in f()")
+}
+
+func g() (float64, error) {
+	return 2.0, fmt.Errorf("error in g()")
+}
+
+func main() {
+	foo, err := f()
+	fmt.Printf("Address of err: %p\n", &err)
+	bar, err := g()
+	fmt.Printf("Address of err: %p\n", &err)
+	fmt.Printf("foo: %d, bar: %f\n", foo, bar)
+}
+```
+
+可能的输出：
+
+```
+Address of err: 0xc00003a250
+Address of err: 0xc00003a250
+foo: 1, bar: 2.000000
+```
 
 
 # 类型
