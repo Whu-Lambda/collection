@@ -10,23 +10,23 @@
 
 # 安装 Go 语言编译器
 
-从 Go 语言[官网下载](https://go.dev/dl/)编译器，安装好之后，打开 PowerShell，输入：
+从 Go 语言[官网下载](https://go.dev/dl/)编译器，安装好之后，打开您喜爱的 Shell，输入：
 
 ```shell
-PS C:\Users\24147> go version
+$ go version
 go version go1.17.6 windows/amd64
 ```
 
-说明 Go 语言安装成功。接下来配置运行：
+如果您看到了类似的输出，说明 Go 语言安装成功。接下来配置运行：
 
 ```shell
 $ go env -w GO111MODULE=on
 $ go env -w GOPROXY=https://goproxy.cn,direct
 ```
 
-第一条命令表示使用 `Go Module` 管理模块
+第一条命令表示使用 `Go Module` 管理模块。这是 Go 1.11 版本所引入的新概念，时至今日已经颇为成熟，它提供了一种简单的管理项目依赖项的方式，详细的使用方式将在后面阐述。
 
-第二条命令使用镜像加速，否则可能导致 Go 相关工具链安装不上。
+第二条命令使用镜像加速，否则可能导致 Go 相关工具链（或您项目的依赖）安装不上。
 
 
 
@@ -54,7 +54,7 @@ module example/hello
 go 1.17
 ```
 
-接下来我们新建一个名为 `hello.go`  的源文件：
+接下来我们新建一个名为 `hello.go` 的源文件：
 
 ```go
 package main
@@ -75,8 +75,27 @@ Hello, World!
 
 # 配置编辑器
 
-这里我们使用 VSCode 作为我们的开发工具，你也可以使用其他开发工具。在插件市场搜索 `go` 安装下载量最大的那个，此时点击 `hello.go` ，VSCode 右下角会提示没有安装 xxx，点击安装所有（Install All），等待 VSCode 安装好所有的工具后即可。
+这里我们使用 VSCode 作为我们的开发工具，您也可以使用其他开发工具。在插件市场搜索 `go` 安装下载量最大的那个，此时点击 `hello.go` ，VSCode 右下角会提示没有安装 xxx，点击安装所有（Install All），等待 VSCode 安装好所有的工具后即可。
 
 ![VScode Go](https://sophia-1303119720.cos.ap-nanjing.myqcloud.com/course/b9af753b694eff5f46181f67132bfba1.png)
 
-到此为止，你已经配置好了 Go 语言的开发环境，接下来就可以愉快地使用 Go 语言了。
+到此为止，您已经配置好了 Go 语言的开发环境，接下来就可以愉快地使用 Go 语言了。
+
+# 练习
+
+您可以使用刚刚叙述的方法编译运行以下的程序吗？
+
+```go
+package main
+
+import (
+	"fmt"
+	"runtime"
+)
+
+func main() {
+	fmt.Printf("%s/%s", runtime.GOOS, runtime.GOARCH)
+}
+```
+
+这个程序输出了什么？
