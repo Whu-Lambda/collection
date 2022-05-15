@@ -26,13 +26,14 @@ Theorem ex_2 : ∀ a b a0 b0 a1 b1 a2 : Z, a0 = a /\ b0 = b /\
 Proof.
   intros a b a0 b0 a1 b1 a2 [HA0 [HB0 [HA1 [HB1 HA2]]]].
   split.
-  - rewrite HA2. rewrite HB0.
-    rewrite HA1. rewrite HB1.
-    rewrite HA1. ring_simplify.
-    reflexivity.
-  - rewrite HB1. rewrite HA0.
-    rewrite HA1. ring_simplify.
-    reflexivity.
+  - rewrite HB1 in HA2. 
+    ring_simplify in HA2.
+    rewrite <- HB0 in HA2.
+    auto.
+  - rewrite HA1 in HB1.
+    ring_simplify in HB1.
+    rewrite <- HA0 in HB1.
+    auto.
 Qed.
 
 (* Example 3 *)
